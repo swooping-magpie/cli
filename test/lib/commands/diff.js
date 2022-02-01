@@ -64,6 +64,7 @@ t.test('no args', t => {
     t.plan(3)
 
     libnpmdiff = async ([a, b], opts) => {
+      t.ok(opts.log, 'should be passed a logger')
       t.equal(a, 'foo@latest', 'should have default spec comparison')
       t.equal(b, `file:${fooPath}`, 'should compare to cwd')
       t.match(opts, npm.flatOptions, 'should forward flat options')
